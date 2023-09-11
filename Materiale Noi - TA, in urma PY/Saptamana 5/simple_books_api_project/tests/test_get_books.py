@@ -52,6 +52,7 @@ class TestGetBooks(unittest.TestCase):
         fiecare carte din response are type non-fiction"""
 
         response = self.requests_handler.get_all_books(type="non-fiction")
+        print(response.json())
         expected_status_code = 200
         expected_books_number = 2
         expected_books_type = "non-fiction"
