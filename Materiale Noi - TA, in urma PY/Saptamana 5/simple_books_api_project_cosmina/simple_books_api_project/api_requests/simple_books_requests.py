@@ -3,14 +3,14 @@ import random
 
 
 class SimpleBooksRequests:
-    _BASE_URL = "http://simple-books-api.glitch.me"
+    _BASE_URL = "https://simple-books-api.glitch.me"
 
     def __init__(self):
         self.token = self._generate_token()
 
     def _generate_token(self):
         url = f"{self._BASE_URL}/api-clients"
-        random_number = random.randint(1, 9999999999999999999)
+        random_number = random.randint(1, 999999999999999)
         request_body = {
             "clientName": "PYTA05",
             "clientEmail": f"pyta05{random_number}@gmail.com"
@@ -25,12 +25,15 @@ class SimpleBooksRequests:
 
     def get_all_books(self, limit=None, type=None):
         url = f"{self._BASE_URL}/books"
-        if limit is not None and type is not None:
-            ...
-        elif limit is not None and type is not None:
-            url += f"?limit={limit}"
-        elif type is not None:
-            url += f"?type={type}"
+
+        # if limit is not None and type is not None:
+        #     ...
+        # elif limit is not None:
+        #     url += f"?limit={limit}"
+        # elif type is not None:
+        #     url += f"?type={type}"
+
+        # ".../books?limit={limit}&type={type}"
 
         request_params = {}
         if limit is not None:
@@ -38,7 +41,7 @@ class SimpleBooksRequests:
         if type is not None:
             request_params.update({"type": type})
 
-        resp = requests.get(url=url,  params=request_params)
+        resp = requests.get(url=url, params=request_params)
         return resp
 
     def get_book_by_id(self, book_id):
@@ -52,41 +55,28 @@ class SimpleBooksRequests:
             "bookId": book_id,
             "customerName": customer_name
         }
-        resp = requests.post(url=url, json=request_body, headers={"authorization": self.token})
+        resp = requests.post(url=url, json=request_body, headers={"Authorization": self.token})
         return resp
 
     def get_all_orders(self):
-        url = url = f"{self._BASE_URL}/orders"
-        resp = requests.get(url=url, headers={"Authorization": self.token})
-        return resp
+        pass
 
-    def get_order_by_id(self, order_id):
-        url = f"{self._BASE_URL}/orders/{order_id}"
-        resp = requests.get(url=url, headers={"Authorization": self.token})
-        return resp
+    def get_order_by_id(self):
+        pass
 
-    def update_order(self, order_id, customer_name):
-        url = f"{self._BASE_URL}/orders/{order_id}"
-        request_body = {
-            "customerName": customer_name
-        }
-        resp = requests.patch(url=url, json=request_body, headers={"Authorization": self.token})
-        return resp
+    def update_order(self):
+        pass
 
-    def delete_order(self, order_id):
-        url = f"{self._BASE_URL}/orders/{order_id}"
-        resp = requests.delete(url=url, headers={"Authorization": self.token})
-        return resp
-
-# get status
+    def delete_order(self):
+        pass
 
 
-# obj1 = SimpleBooksRequests()
+obj1 = SimpleBooksRequests()
 # response = obj1.get_status()
 # print(response.status_code)
 # print(response.json())
-#
-# #  get all books
+
+# get all books
 # response2 = obj1.get_all_books()
 # obj1.get_all_books(limit=4)
 # obj1.get_all_books(type="fiction")
@@ -94,6 +84,6 @@ class SimpleBooksRequests:
 # print(response2.status_code)
 # print(response2.json())
 
-# resp3 = obj1.submit_order(3, "Cosmina")
-# print(resp3.status_code)
-# print(resp3.json())
+resp3 = obj1.submit_order(3, "Cosmina")
+print(resp3.status_code)
+print(resp3.json())
