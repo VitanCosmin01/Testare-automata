@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d245d6d3-2fbe-4ade-8a88-f2d41c2cdb82" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/.idea/BDD_PYTA05.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/BDD_PYTA05/behave.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/BDD_PYTA05/behave.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/base_page.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/browser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/environment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/features/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/features/login.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/notite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/pages/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/pages/login_page.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/pages/products_page.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/steps/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/steps/login_steps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 3/BDD_PYTA05/teorie_W3_part2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/api_requests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/api_requests/simple_books_requests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_delete_order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_get_book.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_get_books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_get_order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_get_orders.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_get_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_submit_order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple books api project/tests/test_update_order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple_books_api_project/tests/test_get_books.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Saptamana 5/simple_books_api_project/tests/test_get_books.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple_books_api_project/tests/test_get_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Saptamana 5/simple_books_api_project/tests/test_get_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 5/simple_books_api_project/tests/test_get_orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Saptamana 5/simple_books_api_project/tests/test_get_orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Saptamana 6/BDD_PROJECT_2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Saptamana 6/BDD_PROJECT_2" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2V9RtddbgG4Dl6PYfqAMzThUqDn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d245d6d3-2fbe-4ade-8a88-f2d41c2cdb82" name="Changes" comment="" />
+      <created>1694246525150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694246525150</updated>
+    </task>
+    <servers />
+  </component>
+</project>

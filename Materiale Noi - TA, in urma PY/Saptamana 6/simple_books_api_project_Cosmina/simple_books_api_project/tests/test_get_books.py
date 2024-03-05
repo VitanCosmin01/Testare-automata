@@ -1,6 +1,6 @@
 import unittest
 
-from api_requests.simple_books_requests import SimpleBooksRequests
+from simple_books_api_project.api_requests.simple_books_requests import SimpleBooksRequests
 
 
 class TestGetBooks(unittest.TestCase):

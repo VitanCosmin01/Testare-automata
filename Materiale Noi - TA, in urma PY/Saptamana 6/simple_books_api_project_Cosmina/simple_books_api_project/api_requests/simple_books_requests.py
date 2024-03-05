@@ -1,5 +1,6 @@
-import requests
 import random
+
+import requests
 
 
 class SimpleBooksRequests:
@@ -80,7 +81,6 @@ class SimpleBooksRequests:
         url = f"{self._BASE_URL}/orders/{order_id}"
         resp = requests.delete(url=url, headers={"Authorization": self.token})
         return resp
-
 
 # obj1 = SimpleBooksRequests()
 # response = obj1.get_status()
