@@ -43,7 +43,7 @@ time.sleep(1)
 # maximizam fereastra
 driver.maximize_window()
 time.sleep(1)
-driver.
+driver.close()
 # cautare dupa tag
 # //h4
 # //form
@@ -54,7 +54,7 @@ element = driver.find_element(By.XPATH, "//h4")
 
 
 # cautare dupa atribut = valoare pentru un tag specific
-#//input[@name='username']
+# //input[@name='username']
 # //input[@type='text']
 # //input[@type='text' and @name='username']
 
@@ -96,7 +96,7 @@ XPATH-ul ne ofera avantajul major ca poate sa efectueze urmatoarele tipuri de ca
 
 # Cautam fratele anterior cu tag-ul label, al elementului
 # cu tag-ul input si atributul id ca fiind username
-#//input[@id='username']//preceding-sibling::label
+# //input[@id='username']//preceding-sibling::label
 
 # cautare dupa frate ulterior - following-sibling
 # //label[@for='username']//following-sibling::input

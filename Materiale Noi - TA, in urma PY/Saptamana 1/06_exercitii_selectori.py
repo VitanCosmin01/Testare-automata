@@ -36,7 +36,7 @@ Incearca mai multe variante posibile.
 
 # VARIANTA By.PARTIAL_LINK_TEXT
 
-form_authentication = driver.find_element(By.PARTIAL_LINK_TEXT, "Form")  # NU MERGE
+form_authentication = driver.find_element(By.PARTIAL_LINK_TEXT, "Form")
 form_authentication.click()
 time.sleep(5)
 
@@ -51,14 +51,14 @@ si verifica, folosind un assert, ca acest element are textul asteptat
 """
 # Varianta SZolt
 login_text = driver.find_element(By.TAG_NAME, "h2")
-login_button = driver.find_element(By.CLASS_NAME, "radius")
+# login_button = driver.find_element(By.CLASS_NAME, "radius") # nu e cerut de exercitiu
 assert login_text.text == "Login Page"
 time.sleep(2)
 
 # identificare dupa Xpath
 # login_element = driver.find_elements(By.XPATH,"L/html/body/div[2]/div/div/h2")
 
-#identificare dupa Tag_Name
+# identificare dupa Tag_Name
 # login_element`= driver.find_element(By.TAG_NAME, "h2")
 # time.sleep(3)
 """
@@ -76,7 +76,7 @@ time.sleep(5)
 5. Verifica, folosind un assert ca ai ajuns pe pagina
 https://the-internet.herokuapp.com/secure
 """
-# nu stiu
+
 link1 = "https://the-internet.herokuapp.com/secure"
 assert driver.current_url == link1
 
@@ -84,7 +84,7 @@ assert driver.current_url == link1
 6. Da click pe butonul logout
 """
 logout = driver.find_element(By.LINK_TEXT, "Logout")  # corect
-logout2 = driver.find_element(By.CLASS_NAME, "button.secondary.radius") # corect
+logout2 = driver.find_element(By.CLASS_NAME, "button.secondary.radius")  # corect
 logout2.click()
 """
 7. Introdu un username corect si o parola incorecta.

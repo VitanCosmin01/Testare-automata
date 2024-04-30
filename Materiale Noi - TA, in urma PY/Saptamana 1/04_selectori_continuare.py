@@ -67,7 +67,7 @@ atunci identificarea noastra nu va mai merge corespunzator
 
 # identificarea mai multor elemente dupa un selector
 div_elements = driver.find_elements(By.CLASS_NAME, "title")
-print(div_elements) # o lista cu obiecte de tip WebElement
+print(div_elements)  # o lista cu obiecte de tip WebElement
 
 assert len(div_elements) == 9
 
