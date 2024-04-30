@@ -29,7 +29,7 @@ driver.maximize_window()
 time.sleep(1)
 
 """
-1. CSS SELECTOR - identificare dupa ID
+1. CSS SELECTOR - identificare dupa ID  ( se pune # inainte de valoarea id-ului_
 
 Identifica inputul username dupa id, folosind CSS SELECTOR
 """
@@ -38,7 +38,7 @@ username.send_keys("tomsmith")
 time.sleep(1)
 
 """
-2. CSS SELECTOR - identificare dupa clasa
+2. CSS SELECTOR - identificare dupa clasa  (se pune . inainte de valoarea clasei)
 
 a. Identifica elementul h4 dupa clasa, folosin CSS SELECTOR
 

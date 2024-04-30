@@ -51,7 +51,7 @@ si verifica, folosind un assert, ca acest element are textul asteptat
 """
 # Varianta SZolt
 login_text = driver.find_element(By.TAG_NAME, "h2")
-# login_button = driver.find_element(By.CLASS_NAME, "radius") # nu e cerut de exercitiu
+login_button = driver.find_element(By.CLASS_NAME, "radius")
 assert login_text.text == "Login Page"
 time.sleep(2)
 
@@ -92,17 +92,20 @@ Identifica mesajul care apare si verifica in cod ca acela este mesajul asteptat.
 """
 username_element = driver.find_element(By.ID, "username")
 username_element.send_keys("tomsmith")
+
 password_element = driver.find_element(By.ID, "password")
 password_element.send_keys("123")
+
 login_element = driver.find_element(By.CLASS_NAME, "fa-sign-in")
 login_element.click()
+
 time.sleep(5)
 
 error_element = driver.find_element(By.ID, "flash")
 print(error_element.text)
 # v1
-# expected_error = "Your password is invalid!\n"
-# assert expected_error == error_element.text
+expected_error = "Your password is invalid!\n×"
+assert expected_error == error_element.text
 
 # v2
 assert "Your password is invalid!" in error_element.text
@@ -119,7 +122,7 @@ La final, testul trebuie sa printeze fie "Nu am reusit sa gasesc parola", fie "P
 h4_element = driver.find_element(By.TAG_NAME, "h4")
 possible_passwords = h4_element.text.split()
 print(possible_passwords)
-# possible_passwords[16] = 'parolaincorecta'
+# possible_passwords[16] = 'parolaincorecta'   #  aici a inlocuit parola corecta cu una incorecta
 # print(possible_passwords)
 for pwd in possible_passwords:
     username = driver.find_element(By.ID, "username")
