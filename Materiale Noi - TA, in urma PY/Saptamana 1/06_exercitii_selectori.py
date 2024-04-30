@@ -98,7 +98,7 @@ login_element = driver.find_element(By.CLASS_NAME, "fa-sign-in")
 login_element.click()
 time.sleep(5)
 
-error_element = driver.find_element(By.ID,"flash")
+error_element = driver.find_element(By.ID, "flash")
 print(error_element.text)
 # v1
 # expected_error = "Your password is invalid!\n"

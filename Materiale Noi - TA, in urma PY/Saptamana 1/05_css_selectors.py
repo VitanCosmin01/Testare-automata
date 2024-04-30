@@ -143,7 +143,6 @@ classes_list = classes_as_str.split()
 assert len(classes_list) == 3
 
 
-
 """
 9. CSS SELECTOR - identificare copil care nu este nici primul, nici ultimul (nth-of-type)
 
