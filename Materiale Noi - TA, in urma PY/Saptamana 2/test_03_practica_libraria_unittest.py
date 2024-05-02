@@ -8,6 +8,7 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+
 class TestLoginPage(unittest.TestCase):
     LINK = "https://the-internet.herokuapp.com/login"
     BTN_LOGIN = (By.XPATH, "//button[@class='radius']")
@@ -45,7 +46,7 @@ class TestLoginPage(unittest.TestCase):
 
     # TEST 1:
     # - Verifica URL-ul paginii curente este corect
-    @unittest.skip
+    #@unittest.skip
     def test_current_url(self):
         print("RULARE TEST")
         actual_url = self.driver.current_url
@@ -56,9 +57,18 @@ class TestLoginPage(unittest.TestCase):
 
     # TEST 2:
     # - Verifica ca titlul paginii apare corect
+    #@unittest.skip
+    def test_title_page(self):
+        pass
 
     # TEST 3:
     # - Verifica daca textul de pe elementul h2 este corect
+
+    def test_h2_text(self):
+        h2_element = self.driver.find_element(By.TAG_NAME, "h2")
+        actual_text = "Login Page"
+        expected_text = h2_element.text
+        self.assertEqual(actual_text, expected_text, "Unexpected text")
 
     # TEST 4:
     # - Verifica ca butonul de Login este displayed/apare pe site
@@ -78,7 +88,7 @@ class TestLoginPage(unittest.TestCase):
 
         # introducem o parola corecta
         password_element = self.driver.find_element(*self.PASSWORD)
-        password_element.send_keys("123")
+        password_element.send_keys("SuperSecretPassword!")
 
         # sa incercam sa ne logam
         btn_login = self.driver.find_element(*self.BTN_LOGIN)
@@ -93,6 +103,27 @@ class TestLoginPage(unittest.TestCase):
 
     # TEST 6:
     # - username corect + parola incorecta
+    def test_login_when_password_is_incorrect(self):
+        username_element = self.driver.find_element(*self.USERNAME)
+        username_element.send_keys("tomsmith")
+        password_element = self.driver.find_element(*self.PASSWORD)
+        password_element.send_keys("123")
+        btn_login = self.driver.find_element(*self.BTN_LOGIN)
+        btn_login.click()
+        error_msg_element = self.driver.find_element(*self.ERROR_MSG)
+        actual_error = error_msg_element.text
+        self.assertIn("Your password is invalid!", actual_error)
 
     # TEST 7:
     # - username corect + parola corecta
+    #@unittest.skip
+    def test_login_when_all_are_correct(self):
+        username_element = self.driver.find_element(*self.USERNAME)
+        username_element.send_keys("tomsmith")
+        password_element = self.driver.find_element(*self.PASSWORD)
+        password_element.send_keys("SuperSecretPassword!")
+        btn_login = self.driver.find_element(*self.BTN_LOGIN)
+        btn_login.click()
+        succes_msg_element = self.driver.find_element(*self.ERROR_MSG)
+        actual_succes_msg = succes_msg_element.text
+        self.assertIn("You logged into a secure area!", actual_succes_msg)

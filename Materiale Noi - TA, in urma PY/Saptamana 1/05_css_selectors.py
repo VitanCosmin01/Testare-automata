@@ -50,7 +50,7 @@ Folosind assert, verifica tag-ul acestuia este div.
 h4_element = driver.find_element(By.CSS_SELECTOR, ".subheader")
 
 # b
-# class1.class2.class3
+# .class1.class2.class3
 element = driver.find_element(By.CSS_SELECTOR, ".large-6.small-12.columns")
 assert element.tag_name == 'div'
 
