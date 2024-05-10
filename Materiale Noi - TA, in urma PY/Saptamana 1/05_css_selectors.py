@@ -40,10 +40,10 @@ time.sleep(1)
 """
 2. CSS SELECTOR - identificare dupa clasa  (se pune . inainte de valoarea clasei)
 
-a. Identifica elementul h4 dupa clasa, folosin CSS SELECTOR
+a. Identifica elementul h4 dupa clasa, folosim CSS SELECTOR
 
 b. Identifica primul element cu clasele large-6, small-12, columns, folosind CSS SELECTOR.
-Folosind assert, verifica tag-ul acestuia este div.
+Folosind assert, verifica daca tag-ul acestuia este div.
 """
 
 # a
@@ -79,8 +79,8 @@ assert actual == expected
 """
 4. CSS SELECTOR - identificare dupa tip atribut=valoare
 
-Identifica labelul pentru parola dupa atribut=valoare, folosind CSS SELECTOR.
-Verifica ca textul acestuia este cel asteptat.
+Identifica label-ul pentru parola dupa atribut=valoare, folosind CSS SELECTOR.
+Verifica ca textul acestuia este cel așteptat.
 """
 
 # *[for='password'] -> cautam orice element (indiferent de tag) care are atributul
@@ -96,11 +96,11 @@ actual = label_element.text
 assert expected == actual
 
 """
-5. CSS SELECTOR - identificare element mergand din copil in copil (>)
+5. CSS SELECTOR - identificare element mergând din copil in copil (>)
 
 Identifica link-ul din footer (Elemental Selenium), pornind de la div-ul
-cu id-ul "page-footer" folosind CSS SELECTOR, si mergand din copil in copil.
-Verifica ca valoarea atributului href este cea asteptata.
+cu id-ul "page-footer" folosind CSS SELECTOR, si mergând din copil in copil.
+Verifica ca valoarea atributului href este cea așteptata.
 """
 footer_link = driver.find_element(By.CSS_SELECTOR, "div#page-footer>div>div>a")
 expected = "http://elementalselenium.com/"
@@ -113,7 +113,7 @@ assert expected == actual
 6. CSS SELECTOR - identificare orice copil
 
 Identifica link-ul din footer (Elemental Selenium), pornind de la div-ul
-cu id-ul "page-footer" folosind CSS SELECTOR, sarind direct la acesta.
+cu id-ul "page-footer" folosind CSS SELECTOR, sărind direct la acesta.
 
 Verifica ca tag-ul acestuia este un tag a
 """
@@ -146,8 +146,8 @@ assert len(classes_list) == 3
 """
 9. CSS SELECTOR - identificare copil care nu este nici primul, nici ultimul (nth-of-type)
 
-Acceseaza elementul input ce apartine de al doilea copil al elementului form
-si verifica ca are id-ul setat corespunzator
+Acceseaza elementul input ce aparține de al doilea copil al elementului form
+si verifica ca are id-ul setat corespunzător
 """
 # form > *:nth-of-type(2) > div > input
 # form > *:nth-of-type(2) input

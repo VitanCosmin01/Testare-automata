@@ -69,7 +69,7 @@ atunci se va astepta numarul de secunde definit, dupa care se va returna eroare 
 nu s-a gasit nici dupa numarul de secunde alocat.
 - Daca avem explicit wait pe un alt element decat elementul cautat si acesta va fi gasit,
 va fi actionat asupra lui instant
-- Daca avem explicit wait pe  un alt element decat elementul cautat si acesta nu va fi gasit,
+- Daca avem explicit wait pe un alt element decat elementul cautat si acesta nu va fi gasit,
 sistemul va returna eroare instant
 
 """

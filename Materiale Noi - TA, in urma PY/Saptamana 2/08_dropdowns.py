@@ -12,17 +12,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from selenium.webdriver.support.select import Select
 
-# LINK = "https://the-internet.herokuapp.com/dropdown"
+LINK = "https://the-internet.herokuapp.com/dropdown"
 
 # instantiem driver-ul
 # service = Service(ChromeDriverManager().install())
-# driver = webdriver.Chrome()
+driver = webdriver.Chrome()
 
 # accesam link-ul
-# driver.get(LINK)
+driver.get(LINK)
 
 # maximizam fereastra
-# driver.maximize_window()
+driver.maximize_window()
 
 # interactiune dropdown
 
@@ -34,15 +34,15 @@ from selenium.webdriver.support.select import Select
 #     if option.text == "Please select an option":
 #         assert not option.is_enabled()
 
-# selectare optiune dupa text -> select_by_visibile_text
+# # selectare optiune dupa text -> select_by_visibile_text
 # select_object.select_by_visible_text("Option 1")
 # time.sleep(4)
-
-# selectare optiune dupa value -> select_by_value
+#
+# # selectare optiune dupa value -> select_by_value
 # select_object.select_by_value("1")
 # time.sleep(4)
-
-# selectare optiune dupa index -> select_by_index
+#
+# # selectare optiune dupa index -> select_by_index
 # select_object.select_by_index(1)
 # time.sleep(5)
 

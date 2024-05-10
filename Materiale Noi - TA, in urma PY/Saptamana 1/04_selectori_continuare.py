@@ -61,8 +61,8 @@ identifica elementul nostru intr-un mod UNIC
 aceasta clasa, motiv pentru care merge identificarea
 (metoda find_element ne identifica primul element cu clasa respectiva)
 
-- nu ne bazam pe noroc -> structura paginii web se poate schima, si
-atunci identificarea noastra nu va mai merge corespunzator
+- nu ne bazam pe noroc -> structura paginii web se poate schimba, si
+atunci identificarea noastră nu va mai merge corespunzător
 """
 
 # identificarea mai multor elemente dupa un selector

@@ -63,17 +63,7 @@ class TestElefantPage(unittest.TestCase):
         results = self.driver.find_elements(By.CLASS_NAME, "product-title")
         print(results)
         print(6)
-        self.assertGreaterEqual(len(results), 10)
-
-    def test_home_page_title(self):
-        """
-        4. Extrageti titlul paginii si verificati ca este corect
-        """
-
-        expected_page_title = "elefant.ro - mallul online al familiei tale! • Branduri de top, preturi excelente • Peste 500.000 de produse pentru tine!"
-
-        actual_page_title = self.driver.title
-        self.assertEqual(expected_page_title, actual_page_title)
+        self.assertLessEqual(len(results), 10)
 
     def test_lowest_price_search_bar_results(self):
         """
@@ -105,13 +95,23 @@ class TestElefantPage(unittest.TestCase):
         print(prices)
         # self.assertEqual(min(prices), 41.79)
 
+    def test_home_page_title(self):
+        """
+        4. Extrageti titlul paginii si verificati ca este corect
+        """
+
+        expected_page_title = "elefant.ro - mallul online al familiei tale! • Branduri de top, preturi excelente • Peste 500.000 de produse pentru tine!"
+
+        actual_page_title = self.driver.title
+        self.assertEqual(expected_page_title, actual_page_title)
+
     def test_login_invalid_credentials(self):
         """
         5. Intrati pe site, accesati butonul cont si click pe conectare.
         Identificati elementele de tip user si parola si inserati valori incorecte
         (valori incorecte inseamna oricare valori care nu sunt recunoscute drept cont valid)
         - Dati click pe butonul "conectare" si verificati urmatoarele:
-                     1. Faptul ca nu s-a facut logarea in cont
+                    1. Faptul ca nu s-a facut logarea in cont
                     2. Faptul ca se returneaza eroarea corecta
         """
 

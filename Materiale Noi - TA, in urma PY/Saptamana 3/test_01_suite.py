@@ -54,6 +54,7 @@ import HtmlTestRunner
 
 from test_alerts import TestAlerts
 
+
 class TestSuite(unittest.TestCase):
 
     def test_suite(self):

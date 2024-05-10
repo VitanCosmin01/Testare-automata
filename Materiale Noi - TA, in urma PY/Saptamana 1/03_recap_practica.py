@@ -105,8 +105,8 @@ time.sleep(2)
 
 """
 8. Identifica elementele in care trebuie sa introduci parolele
-si introdu aceeasi parola (3 caractere) in ambele locuri.
-Verifica ca apare mesajul de eroare asteptat.
+si introdu aceeași parola (3 caractere) in ambele locuri.
+Verifica ca apare mesajul de eroare așteptat.
 """
 
 # identificare dupa ID
@@ -157,7 +157,7 @@ Introdu doua parole identice si apasa pe butonul REGISTER.
 
 Verifica ca in url-ul paginii curente se gaseste string-ul "registerresult"
 """
-# stergem continutul de pe elemente
+# ștergem continutul de pe elemente
 pwd_el.clear()
 confirm_pwd_el.clear()
 
