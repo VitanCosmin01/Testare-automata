@@ -24,15 +24,18 @@ def step_impl(context):
     context.products_page.check_current_url()
 
 
+# Scenario 2
 @when("I insert the correct username and incorrect password")
 def step_impl(context):
     context.login_page.insert_correct_username()
     context.login_page.insert_incorrect_password()
 
 
-@then("I can't login into the application and receive error Epic sadface: Username and password do not match any user in this service")
+@then("I can't login into the application and receive error Epic sadface: "
+      "Username and password do not match any user in this service")
 def step_impl(context):
     context.login_page.check_error_message_invalid_pwd()
+
 
 # Scenario 3
 @when("I insert the incorrect username and correct password")
@@ -40,30 +43,63 @@ def step_impl(context):
     context.login_page.insert_incorrect_username()
     context.login_page.insert_correct_password()
 
+
 # Scenario 4
 @when("I insert the valid username and  no password")
 def step_impl(context):
     context.login_page.insert_correct_username()
 
-@then("I can't login into the application and receive error Epic sadface: Password is required")
+
+@then("I can't login into the application and receive error Epic sadface: "
+      "Password is required")
 def step_impl(context):
     context.login_page.check_error_message_password_required()
+
 
 # Scenario 5
 @when("I insert username none and a valid password")
 def step_impl(context):
     context.login_page.insert_correct_password()
 
-@then("I can't login into the application and receive error Epic sadface: Username is required")
+
+@then("I can't login into the application and receive error Epic sadface: "
+      "Username is required")
 def step_impl(context):
     context.login_page.check_error_message_username_required()
+
 
 # Scenario 6
 @when("I insert username none and password none")
 def step_impl(context):
     context.login_page.check_error_message_username_required()
 
+
 # Scenario 7
 @when("I insert incorrect username and password is none")
 def step_impl(context):
-    context.login_page.check_error_message_password_required()
+    context.login_page.insert_incorrect_username()
+
+
+# Scenariu 8
+@when("I insert incorrect password")
+def step_impl(context):
+    context.login_page.insert_incorrect_password()
+
+
+# Scenariu 9
+@when("I insert the incorrect username and incorrect password")
+def step_impl(context):
+    context.login_page.insert_incorrect_username()
+    context.login_page.insert_incorrect_password()
+
+
+# Scenariu 10
+@when("I insert the locked username and correct password")
+def step_impl(context):
+    context.login_page.insert_locked_username()
+    context.login_page.insert_correct_password()
+
+
+@then("I can't login into the application and receive error Epic sadface: Sorry, this user has been locked out.")
+def step_impl(context):
+    context.login_page.check_error_message_locked_username()
