@@ -45,6 +45,18 @@ class ProductPage(BasePage):
         add_to_cart_button.click()
 
     def check_kart(self):
-        actual_kart = self.browser.find_element(By.CLASS_NAME, "shopping_cart_link").text
-        expected_kart_item = 1
+        actual_kart = self.browser.find_element(By.ID, "shopping_cart_container").text
+        expected_kart_item = str(1)
         assert actual_kart == expected_kart_item
+
+    def remove_from_kart(self):
+        remove_to_cart_button = self.browser.find_element(By.ID, "remove-sauce-labs-backpack")
+        remove_to_cart_button.click()
+
+    def check_empty_kart(self):
+        actual_kart = self.browser.find_element(By.CLASS_NAME, "shopping_cart_link").text
+        expected_kart_item = ""
+        assert actual_kart == expected_kart_item
+
+
+

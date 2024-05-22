@@ -21,7 +21,7 @@ Scenario: Adding to cart
   When I click the button Add to cart
   Then The product is added to the cart
 
-
+@kart_out
 Scenario: Deleting item
   When I click the button Remove
-  Then The item is deleted from cart
+  Then The item is deleted from kart

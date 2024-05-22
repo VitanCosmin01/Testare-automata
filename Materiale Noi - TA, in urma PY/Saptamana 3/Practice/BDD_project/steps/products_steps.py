@@ -31,5 +31,16 @@ def step_impl(context):
 
 @then("The product is added to the cart")
 def step_impl(context):
-    context.products_page.add_to_cart()
     context.products_page.check_kart()
+
+
+# Scenariu 4
+@when("I click the button Remove")
+def step_impl(context):
+    context.products_page.add_to_cart()
+    context.products_page.remove_from_kart()
+
+
+@then("The item is deleted from kart")
+def step_impl(context):
+    context.products_page.check_empty_kart()
