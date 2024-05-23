@@ -54,7 +54,7 @@ class ProductPage(BasePage):
         remove_to_cart_button.click()
 
     def check_empty_kart(self):
-        actual_kart = self.browser.find_element(By.CLASS_NAME, "shopping_cart_link").text
+        actual_kart = self.browser.find_element(By.LINK_TEXT, "").text
         expected_kart_item = ""
         assert actual_kart == expected_kart_item
 

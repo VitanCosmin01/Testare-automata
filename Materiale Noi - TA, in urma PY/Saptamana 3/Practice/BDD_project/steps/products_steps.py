@@ -37,7 +37,6 @@ def step_impl(context):
 # Scenariu 4
 @when("I click the button Remove")
 def step_impl(context):
-    context.products_page.add_to_cart()
     context.products_page.remove_from_kart()
 
 
