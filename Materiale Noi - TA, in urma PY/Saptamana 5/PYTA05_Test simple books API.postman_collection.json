@@ -1,0 +1,1680 @@
+{
+	"info": {
+		"_postman_id": "71b4ab13-3a80-4698-bbfc-6d03df3b27ff",
+		"name": "PYTA05_Test simple books API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28413326"
+	},
+	"item": [
+		{
+			"name": "STATUS",
+			"item": [
+				{
+					"name": "Get status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Structura generala test\r",
+									"// pm.test(\"Descriere test\", function () {\r",
+									"//     // implementarea testului\r",
+									"// });\r",
+									"\r",
+									"// Test 1: Verificam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Test 2: Verificam ca in raspuns am primit cheia status cu valoarea OK\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"API Status is OK\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql(\"OK\");\r",
+									"    pm.expect(jsonData[\"status\"]).to.eql(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/status",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LIST OF BOOKS",
+			"item": [
+				{
+					"name": "Get list of all books(no query params provided)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca prima carte are atributele corecte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check first book's characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.info(\"Id is:\", jsonData[0].id)  //-pentru a afisa informatii in consola (console.log(), .warn(), .info(), .error(), .clear())\r",
+									"    pm.expect(jsonData[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData[0].name).to.eql(\"The Russian\");\r",
+									"    pm.expect(jsonData[0].type).to.eql(\"fiction\");\r",
+									"    pm.expect(jsonData[0].available).to.eql(true);\r",
+									"    pm.expect(jsonData[0].available).to.be.true; \r",
+									"    pm.collectionVariables.get(\"variable_key\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca a doua carte are atributele corecte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check second book's characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[1].id).to.eql(2);\r",
+									"    pm.expect(jsonData[1].name).to.eql(\"Just as I Am\");\r",
+									"    pm.expect(jsonData[1].type).to.eql(\"non-fiction\");\r",
+									"    // pm.expect(jsonData[1].available).to.eql(false);\r",
+									"    pm.expect(jsonData[1].available).to.be.false;\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca in response avem inclus string-ul \"id\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Response contains id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam ca avem exact 6 carti in total\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"There are exactly 6 books received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(6);\r",
+									"});\r",
+									"\r",
+									"// Test 7: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books/",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all books when type is fiction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snipet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"//Snipet: Status code: Code name has string\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"// Test 3: Testam ca s-au returnat exact 4 carti\r",
+									"// Snipet: Response body: JSON value check\r",
+									"pm.test(\"Testam ca s-au returnat exact 4 carti\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(4);\r",
+									"});\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"pm.test(\"Response time is less than 5000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Snipet: Response body: Value check\r",
+									"pm.test(\"Testam atributele pentru prima carte\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData[0].name).to.eql(\"The Russian\");\r",
+									"    pm.expect(jsonData[0].type).to.eql(\"fiction\");\r",
+									"    pm.expect(jsonData[0].available).to.eql(true);\r",
+									"});\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"//Snipet: Response body: Value check\r",
+									"pm.test(\"Testam atributele pentru a doua carte\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[1].id).to.eql(3);\r",
+									"    pm.expect(jsonData[1].name).to.eql(\"The Vanishing Half\");\r",
+									"    pm.expect(jsonData[1].type).to.eql(\"fiction\");\r",
+									"    pm.expect(jsonData[1].available).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"// Test 7: Testam ca avem string-ul \"type\" in response\r",
+									"// Snippet: Contains string\r",
+									"pm.test(\"There is string type in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"type\");\r",
+									"});\r",
+									"\r",
+									"// Test 8: Testam ca fiecare carte are type fiction\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"All books have fiction type\", function () {\r",
+									"    // implementare in Python\r",
+									"    // for book in jsonData:\r",
+									"    //  assert book[\"type\"] == \"fiction\"\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    // foreach in JavaScript\r",
+									"    for (const book of jsonData) {\r",
+									"         pm.expect(book.type).to.eql(\"fiction\");\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"// Test 9: Testam ca fiecare carte are available true\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"All books are available\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    for (const book of jsonData) {\r",
+									"        pm.expect(book.available).to.eql(true);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"// Test 10: Testam ca id-urile sunt de tip number\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"All ids are numbers\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    for (const book of jsonData) {\r",
+									"        pm.expect(typeof book.id).to.eql(\"number\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books?type=fiction",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "fiction"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all books when type is nonfiction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code este 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"//Snipet: Status code: Code name has a string\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca s-au returnat exact 2 carti\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Test of 2 books only\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(2);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Snippet: Response time is less then 200ms\r",
+									"pm.test(\"Response time is less than 5s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Snipet: Response body:JSON value check\r",
+									"pm.test(\"Testing 1'st book atributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.eql(2);\r",
+									"    pm.expect(jsonData[0].name).to.eql(\"Just as I Am\");\r",
+									"    pm.expect(jsonData[0].type).to.eql(\"non-fiction\");\r",
+									"    pm.expect(jsonData[0].available).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"// Snipet: Response body: JSON value check\r",
+									"pm.test(\"Testing 2'nd book atributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[1].id).to.eql(5);\r",
+									"    pm.expect(jsonData[1].name).to.eql(\"Untamed\");\r",
+									"    pm.expect(jsonData[1].type).to.eql(\"non-fiction\");\r",
+									"    pm.expect(jsonData[1].available).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"// Test 7: Testam ca avem string-ul \"type\" in response\r",
+									"//Snippet: Response body: JSON value check\r",
+									"pm.test(\"Body contine 'type'\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"type\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books?type=non-fiction",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "non-fiction"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all books when limit is betwin 1 and 6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"//Snippet: Status code is 200\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Test 3: Testam ca s-au returnat exact 4 carti\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"// Test 7: Testam ca avem string-ul \"available\" in response\r",
+									"// Test 8: Testam ca toate id-urile cartilor sunt de tip numbers\r",
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca s-au returnat exact 4 carti\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"They are exactly 4 books received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(4);\r",
+									"});\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"pm.test(\"Response time is less than 5s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check first book's characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData[0].name).to.eql(\"The Russian\");\r",
+									"    pm.expect(jsonData[0].type).to.eql(\"fiction\");\r",
+									"    pm.expect(jsonData[0].available).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check second book's characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[1].id).to.eql(2);\r",
+									"    pm.expect(jsonData[1].name).to.eql(\"Just as I Am\");\r",
+									"    pm.expect(jsonData[1].type).to.eql(\"non-fiction\");\r",
+									"    pm.expect(jsonData[1].available).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// Test 7: Testam ca avem string-ul \"available\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"There is string available in response \", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"available\");\r",
+									"});\r",
+									"\r",
+									"// Test 8: Testam ca toate id-urile cartilor sunt de tip numbers\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"All ids are numbers\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    for (const book of jsonData){\r",
+									"        pm.expect(typeof book.id).to.eql(\"number\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books?limit=4",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all books when limit is betwin 7 and 20",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Test 3: Testam ca s-au returnat exact 6 carti\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"// Test 7: Testam ca avem string-ul \"available\" in response\r",
+									"// Test 8: Testam ca toate id-urile cartilor sunt de tip numbers\r",
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca s-au returnat exact 6 carti\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"There are exactly 6 books\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(6);\r",
+									"});\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200 ms\r",
+									"pm.test(\"Response time is less than 5s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check first book's characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData[0].name).to.eql(\"The Russian\");\r",
+									"    pm.expect(jsonData[0].type).to.eql(\"fiction\");\r",
+									"    pm.expect(jsonData[0].available).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check second book's characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[1].id).to.eql(2);\r",
+									"    pm.expect(jsonData[1].name).to.eql(\"Just as I Am\");\r",
+									"    pm.expect(jsonData[1].type).to.eql(\"non-fiction\");\r",
+									"    pm.expect(jsonData[1].available).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// Test 7: Testam ca avem string-ul \"available\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"There is string available in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"available\");\r",
+									"});\r",
+									"\r",
+									"// Test 8: Testam ca toate id-urile cartilor sunt de tip numbers\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"All ids are number\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (const book of jsonData) {\r",
+									"        pm.expect(typeof book.id).to.eql(\"number\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books?limit=9",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all books when limit is a negative number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 400\r",
+									"// Snipet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"// Test 2: Testam ca numele status code-ului este Bad Request\r",
+									"//Snipet: Status code: Code name has string\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snipet:response time is less then 200ms\r",
+									"pm.test(\"Response time is less than 1s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"error\" in response\r",
+									"// Snipet: Response body: Contains string\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam mesajul de eroare ca este cel asteptat.\r",
+									"// Snipet: response body; JSOAN value check\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"Invalid value for query parameter 'limit'. Must be greater than 0.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books?limit=-4",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "-4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all books when limit is not a number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Test 3: Testam ca s-au returnat exact 6 carti\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"// Test 7: Testam ca avem string-ul \"available\" in response\r",
+									"// Test 8: Testam ca toate id-urile cartilor sunt de tip numbers\r",
+									"\r",
+									"\r",
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"// Test 3: Testam ca s-au returnat exact 6 carti\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"There are exactly 6 books\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(6);\r",
+									"});\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"// Test 5: Testam atributele pentru prima carte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check first book's atributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData[0].name).to.eql(\"The Russian\");\r",
+									"    pm.expect(jsonData[0].type).to.eql(\"fiction\");\r",
+									"    pm.expect(jsonData[0].available).to.eql(true);\r",
+									"});\r",
+									"// Test 6: Testam atributele pentru a doua carte\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check second book's characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[1].id).to.eql(2);\r",
+									"    pm.expect(jsonData[1].name).to.eql(\"Just as I Am\");\r",
+									"    pm.expect(jsonData[1].type).to.eql(\"non-fiction\");\r",
+									"    pm.expect(jsonData[1].available).to.be.false;\r",
+									"});\r",
+									"// Test 7: Testam ca avem string-ul \"available\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Body contains string available\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"available\");\r",
+									"});\r",
+									"// Test 8: Testam ca toate id-urile cartilor sunt de tip numbers\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"All ids are numbers\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    for(const book of jsonData) {\r",
+									"        pm.expect(typeof book.id).to.eql(\"number\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books?limit=z",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SINGLE BOOK",
+			"item": [
+				{
+					"name": "Get a book by ID that exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca avem status code-ul 200\r",
+									"//Snippet: Status code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"//Snippet: \r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"//Snipet: Response time is less then 5 s\r",
+									"pm.test(\"Response time is less than 5 s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"author\" in response\r",
+									"//Snipet: Response body: Contains string\r",
+									"pm.test(\"Body contine 'author'\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"author\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca avem string-ul \"price\" in response\r",
+									"//Snippet: Response body: Contains string\r",
+									"pm.test(\"Body contine 'price'\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"price\");\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam ca avem string-ul \"current-stock\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Body contine 'current-stock'\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"current-stock\");\r",
+									"});\r",
+									"\r",
+									"// Test 7: Testam ca avem current stock mai mare decat 0\r",
+									"//Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Current stock mai mare decat 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[\"current-stock\"]).to.above(0);\r",
+									"    pm.expect(jsonData[\"current-stock\"]).greaterThan(0);  //a- 2 varianta\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books/3",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a book by ID that exists that not exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"//Snippet: \r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet:\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"// Test 3: Testam ca avem string-ul \"error\" in response\r",
+									"// Snippet: \r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul erorii este cel asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"No book with id 200\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books/200",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books",
+								"200"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SUBMIT AN ORDER",
+			"item": [
+				{
+					"name": "Order an available book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Verificam ca status code-ul este 201\r",
+									"// Test 2: Verificam ca numele status code-ului este Created\r",
+									"// Test 3: Verificam ca avem cheia \"created\" in response cu valoarea true\r",
+									"// Test 4: Verificam ca avem string-ul \"orderId\" in response\r",
+									"// test 5: Verficam ca orderID are lungimea asteptata\r",
+									"// Test 1: Verificam ca status code-ul este 201\r",
+									"// Snippet :  status code : code is 200 \r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Verificam ca numele status code-ului este Created\r",
+									"// Snippet :  Status code : Code name has string\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"// Test 3: Verificam ca avem cheia \"created\" in response cu valoarea true\r",
+									"// Snippet : \"Response body: JSON check\r",
+									"pm.test(\"check created is true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.created).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Verificam ca avem string-ul \"orderId\" in response\r",
+									"// Snippet : \"Response body: Contains string\"\r",
+									"pm.test(\"Check 'orderID' is in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"orderId\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: verificam ca orderID are lungimea asteptata\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check the len of the orderID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.orderId.length).to.eql(21);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "1f62068aaaf8d796b607133f992b8550bf6d264f20ab7e3eacafedadf1711e5f"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\": 1,\r\n    \"customerName\": \"Vitan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders?type=non-fiction",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "non-fiction"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order a book that is not avaible",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Test 3: Testam ca avem string-ul \"error\" in response\r",
+									"// Test 4: Testam ca avem mesajul de eroare asteptat\r",
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has a string\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca avem string-ul \"error\" in response\r",
+									"// Snippet: Response body : Contains string\r",
+									"pm.test(\"String error is in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"This book is not in stock. Try again later.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"bookId\": 2,\r\n    \"customerName\": \"Vitan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order a book that is not in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 400\r",
+									"// Test 2: Testam ca numele status code-ului este Bad Request\r",
+									"// Test 3: Testam ca avem \"error\" in response\r",
+									"// Test 4: Testam ca avem mesajul de eroare asteptat\r",
+									"// Test 1: Testam ca status code-ul este 400\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"// Test 2: Testam ca numele status code-ului este Bad Request\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name has string Bad Request\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"// Test 3: Testam ca avem \"error\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Body contains string error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"// Test 4: Testam ca avem mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check err msg\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"Invalid or missing bookId.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\": 200,\r\n    \"customerName\": \"Vitan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET ALL ORDERS",
+			"item": [
+				{
+					"name": "Get all orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca avem status code-ul 200\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Test 4: Testam ca obtinem cel putin o comanda\r",
+									"// Test 5: Testam ca avem in response \"customerName\"\r",
+									"// Test 6: Testam ca avem in response \"quantity\"\r",
+									"// Test 1: Testam ca avem status code-ul 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet:Status code: Code name has string\r",
+									"pm.test(\"Status code name has string: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"pm.test(\"Response time is less than 5s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca obtinem cel putin o comanda\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"There is at least one order\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).greaterThan(0);\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca avem in response \"customerName\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Response contains: customerName\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"customerName\");\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam ca avem in response \"quantity\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Response contains: quantity\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"quantity\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET A SINGLE ORDER",
+			"item": [
+				{
+					"name": "Get an order when exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Test 4: Testam ca avem \"customerName\" in response\r",
+									"\r",
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"pm.test(\"Response time is less than 5s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem \"customerName\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"There is the customerName response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"customerName\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders/dwyf8WURSz_8x2oScbDlR",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders",
+								"dwyf8WURSz_8x2oScbDlR"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an order when doesn't exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Test 3: Testam ca avem \"error\" in response\r",
+									"// Test 4: Testam ca avem mesajul de eroare asteptat\r",
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca avem \"error\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Response has error in message\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"No order with id aaaaaaaaaaaaaaaaaa.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customername\": \"Cosmin11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders/aaaaaaaaaaaaaaaaaa",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders",
+								"aaaaaaaaaaaaaaaaaa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UPDATE ORDER",
+			"item": [
+				{
+					"name": "Update order that exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"No Content\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200 ms\r",
+									"pm.test(\"Response time is less than 5s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerName\": \"Viorel\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders/dwyf8WURSz_8x2oScbDlR",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders",
+								"dwyf8WURSz_8x2oScbDlR"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update order that not exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has string\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca avem \"error\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"Response has error in message\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"No order with id aaaaaaaaaaaaaaaaaa.\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders/aaaaaaaaaaaaaaaaaa",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders",
+								"aaaaaaaaaaaaaaaaaa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE ORDER",
+			"item": [
+				{
+					"name": "Delete order when order exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam performanta requestu-lui\r",
+									"// Snipet: Response time in less than 200ms\r",
+									"pm.test(\"Response time is less than 2s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam status code ca este 204\r",
+									"// Snipet: Status code: Code is 200\r",
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"// Test 3: testam ca status code contine \"No Content\"\r",
+									"// Snipet: Status Code: Code name has string\r",
+									"pm.test(\"Status code name has 'No Content\", function () {\r",
+									"    pm.response.to.have.status(\"No Content\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders/dwyf8WURSz_8x2oScbDlR",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders",
+								"dwyf8WURSz_8x2oScbDlR"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order that does not exists in DB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snipet : Status code: Code is 404\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca status code-ul contine \"Not Found\"\r",
+									"// Snipet: Status code: Code name has string\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca in raspuns apare \"error\"\r",
+									"// Snipet: Response body: Contains string\r",
+									"pm.test(\"Body matches string 'error'\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul de eroare este cel asteptat\r",
+									"// Snipet: Response body: Json value check\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"No order with id aaaaaaaaaaaaaaaaaa.\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: testam permormanta request-ului\r",
+									"// Snipet: Response time is less than 1 sec\r",
+									"pm.test(\"Response time is less than 1 sec\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c"
+							}
+						],
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/orders/aaaaaaaaaaaaaaaaaa",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"orders",
+								"aaaaaaaaaaaaaaaaaa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "Get token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4183d094ed919cfc8c4e8de312676627c0f6bc9a93de100d2660026548d21a1c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"clientName\": \"Vitan\",\r\n   \"clientEmail\": \"cosmin@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/api-clients",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"api-clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

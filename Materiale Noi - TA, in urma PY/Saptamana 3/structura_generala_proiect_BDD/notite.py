@@ -42,7 +42,7 @@ rularea testelor.
 cu browser-ul/driver-ul (deschiderea browser-ului, setare implicit wait, maximizare fereastra, inchidere browser etc)
 
 5. Fisierul base_page.py:
-- vom avea o clasa BasePage care va mosteni din clasa Browser si va cuprinde proprietati si caracteristici de baza
+- vom avea o clasă BasePage care va mosteni din clasa Browser si va cuprinde proprietati si caracteristici de baza
 ale unei pagini web + interactiuni de baza pe o pagina web
 (ex: identificarea unui element HTML, verificarea unui mesaj de eroare etc )
 

@@ -90,7 +90,7 @@ Feature: Check the funtionality of login page
 #    When I insert username "invalid_username" and password "invalid_password"
 #    And I click the login button
 #    Then I cannot login into the application and receive error message:"Epic sadface: Username and password do not match any user in this service"
-
+#
 #  Scenario: Check that we can't login into the application when providing invalid credentials (username none + password none)
 #    When I insert username "none" and password "none"
 #    And I click the login button
@@ -106,4 +106,4 @@ Feature: Check the funtionality of login page
       | none | none | Epic sadface: Username is required |
       | none | invalid_password | Epic sadface: Username is required |
       | invalid_username | none | Epic sadface: Password is required |
-      | locked_out_user | secret_sauce | Epic sadface: Sorry, this user has been locked out. |
+      | locked_out_u ser | secret_sauce | Epic sadface: Sorry, this user has been locked out. |

@@ -66,13 +66,13 @@ class LoginPage(BasePage):
     # Pentru scenariul 6 avem definite functiile deja
 
     # Scenario 7
-    # Pentru scenariul 6 avem definite functiile deja
+    # Pentru scenariul 7 avem definite functiile deja
 
     # Scenario 8
-    # Pentru scenariul 6 avem definite functiile deja
+    # Pentru scenariul 8 avem definite functiile deja
 
     # Scenario 9
-    # Pentru scenariul 6 avem definite functiile deja
+    # Pentru scenariul 9 avem definite functiile deja
 
     # Scenario 10
     def insert_locked_username(self):
