@@ -27,9 +27,10 @@ class TestGetBooks(unittest.TestCase):
         """
         Verificam:
 
-        status code este 200
-        in response am obtinut exact 4 carti
-        fiecare carte din response are type fiction"""
+        - status code este 200
+        - in response am obtinut exact 4 carti
+        - fiecare carte din response are type fiction
+        """
 
         response = self.requests_handler.get_all_books(type="fiction")
         print(response)
@@ -47,9 +48,10 @@ class TestGetBooks(unittest.TestCase):
         """
         Verificam:
 
-        status code este 200
-        in response am obtinut exact 2 carti
-        fiecare carte din response are type non-fiction"""
+        - status code este 200
+        - in response am obtinut exact 2 carti
+        - fiecare carte din response are type non-fiction
+        """
 
         response = self.requests_handler.get_all_books(type="non-fiction")
         print(response.json())
@@ -78,7 +80,9 @@ class TestGetBooks(unittest.TestCase):
 
     def test_get_all_books_when_limit_is_between_7_20(self):
         """
-        TODO: Stabileste care sunt verificarile care trebuie facute.
+        Verificam:
+        - status code este 200
+        - verificam ca obtinem 6 carti chiar daca am setat limita ma mare de 6
         """
         response = self.requests_handler.get_all_books(limit=15)
         expected_status_code = 200
@@ -101,7 +105,9 @@ class TestGetBooks(unittest.TestCase):
 
     def test_get_all_books_when_limit_is_not_number(self):
         """
-        TODO: Stabileste care sunt verificarile care trebuie facute.
+        Verificam:
+        - status code este 200
+        - verificam ca obtinem 6 carti chiar daca am setat limita ca fiind o litera
         """
         response = self.requests_handler.get_all_books(limit="z")
         expected_status_code = 200

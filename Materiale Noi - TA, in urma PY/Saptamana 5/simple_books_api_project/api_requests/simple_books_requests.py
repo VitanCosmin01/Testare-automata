@@ -25,12 +25,13 @@ class SimpleBooksRequests:
 
     def get_all_books(self, limit=None, type=None):
         url = f"{self._BASE_URL}/books"
-        if limit is not None and type is not None:
-            ...
-        elif limit is not None and type is not None:
-            url += f"?limit={limit}"
-        elif type is not None:
-            url += f"?type={type}"
+
+        # if limit is not None and type is not None:
+        #     ...
+        # elif limit is not None and type is not None:
+        #     url += f"?limit={limit}"
+        # elif type is not None:
+        #     url += f"?type={type}"
 
         request_params = {}
         if limit is not None:
@@ -56,7 +57,7 @@ class SimpleBooksRequests:
         return resp
 
     def get_all_orders(self):
-        url = url = f"{self._BASE_URL}/orders"
+        url = f"{self._BASE_URL}/orders"
         resp = requests.get(url=url, headers={"Authorization": self.token})
         return resp
 
@@ -79,8 +80,6 @@ class SimpleBooksRequests:
         return resp
 
 # get status
-
-
 # obj1 = SimpleBooksRequests()
 # response = obj1.get_status()
 # print(response.status_code)
