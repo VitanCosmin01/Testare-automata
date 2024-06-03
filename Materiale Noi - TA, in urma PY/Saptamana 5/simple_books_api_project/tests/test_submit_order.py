@@ -10,7 +10,7 @@ class TestSubmitOrder(unittest.TestCase):
     Exemple of request body:
             {
                 "bookId": 1,
-                "customerName": "Laurentia"
+                "customerName": "Vitan"
             }
     """
 
@@ -21,11 +21,12 @@ class TestSubmitOrder(unittest.TestCase):
         """
         Verificam:
 
-        status code este 201
-        status-ul comenzii create este "true"
-        avem cheia orderId in response"""
+        - status code este 201
+        - status-ul comenzii create este "true"
+        - avem cheia orderId in response
+        """
 
-        response = self.request_handler.submit_order(book_id=1, customer_name='Laurentia')
+        response = self.request_handler.submit_order(book_id=1, customer_name='Vitan')
         expected_status_code = 201
         expected_status_order = True
         expected_key = "orderId"
@@ -41,7 +42,7 @@ class TestSubmitOrder(unittest.TestCase):
         status code este 404
         mesajul de eroare este cel asteptat"""
 
-        response = self.request_handler.submit_order(book_id=2, customer_name='Laurentia')
+        response = self.request_handler.submit_order(book_id=2, customer_name='Vitan')
         expected_status_code = 404
         expected_error_msg = "This book is not in stock. Try again later."
         self.assertEqual(expected_status_code, response.status_code)
@@ -54,7 +55,7 @@ class TestSubmitOrder(unittest.TestCase):
         status code este 400
         mesajul de eroare este cel asteptat"""
 
-        response = self.request_handler.submit_order(book_id=100, customer_name='Laurentia')
+        response = self.request_handler.submit_order(book_id=100, customer_name='Vitan')
         expected_status_code = 400
         expected_error_msg = "Invalid or missing bookId."
         self.assertEqual(expected_status_code, response.status_code)

@@ -79,8 +79,9 @@ class SimpleBooksRequests:
         resp = requests.delete(url=url, headers={"Authorization": self.token})
         return resp
 
+
 # get status
-# obj1 = SimpleBooksRequests()
+obj1 = SimpleBooksRequests()
 # response = obj1.get_status()
 # print(response.status_code)
 # print(response.json())
@@ -96,3 +97,4 @@ class SimpleBooksRequests:
 # resp3 = obj1.submit_order(3, "Cosmina")
 # print(resp3.status_code)
 # print(resp3.json())
+
