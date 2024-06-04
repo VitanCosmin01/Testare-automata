@@ -44,7 +44,7 @@ cu browser-ul/driver-ul (deschiderea browser-ului, setare implicit wait, maximiz
 5. Fisierul base_page.py:
 - vom avea o clasă BasePage care va mosteni din clasa Browser si va cuprinde proprietati si caracteristici de baza
 ale unei pagini web + interactiuni de baza pe o pagina web
-(ex: identificarea unui element HTML, verificarea unui mesaj de eroare etc )
+(ex: identificarea unui element HTML, verificarea unui mesaj de eroare etc)
 
 6. Folderul pages:
 - vom avea clase definite pentru fiecare pagina din aplicatia web pe care o testam
