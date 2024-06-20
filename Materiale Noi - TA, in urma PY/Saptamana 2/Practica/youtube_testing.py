@@ -13,13 +13,16 @@ class TestYoutubePage(unittest.TestCase):
         self.driver.maximize_window()
         time.sleep(3)
         self.driver.implicitly_wait(10)
-
+        # accept cookies
+        accept_cookies = self.driver.find_element(By.XPATH,
+                                                  "//*[@id='content']/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]")
+        accept_cookies.click()
     def tearDown(self):
         self.driver.close()
 
     def test_login(self):
-        accept_cookies = self.driver.find_element(By.XPATH, "//*[@id='content']/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]")
-        accept_cookies.click()
+        pass
+
 
 
 if __name__ == '__main__':
