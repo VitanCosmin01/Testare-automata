@@ -37,12 +37,12 @@ select_object = Select(driver.find_element(By.ID, "gh-cat"))
 # print(select_object.options)
 
 # selectare dupa text
-# select_object.select_by_visible_text("Antiques")
-# time.sleep(4)
+select_object.select_by_visible_text("Antiques")
+time.sleep(4)
 
 # selectare dupa value
-# select_object.select_by_value("20081")  # ->Antiques
-# time.sleep(4)
+select_object.select_by_value("20081")  # ->Antiques
+time.sleep(4)
 
 # selectare dupa index
 select_object.select_by_index(1)   # ->Antiques

@@ -33,11 +33,11 @@ Observa ce se intampla.
 """
 
 # identificam butonul 'Change Text to Selenium Webdriver
-# change_text_btn = driver.find_element(By.ID, "populate-text")
-# change_text_btn.click()
+change_text_btn = driver.find_element(By.ID, "populate-text")
+change_text_btn.click()
 
 # identificam elementul cu textul 'Selenium Webdriver' dupa text si id (XPATH)
-# changing_text_element = driver.find_element(By.XPATH, '//*[@id="h2" and contains(text(), "Selenium Webdriver")]')
+changing_text_element = driver.find_element(By.XPATH, '//*[@id="h2" and contains(text(), "Selenium Webdriver")]')
 
 # CONCLUZIE:
 # Pentru ca incercam sa identificam elementul cu textul 'Selenium Webdriver' fara a seta un timp de asteptare,
@@ -54,11 +54,11 @@ Observa ce se intampla
 # driver.implicitly_wait(5)
 
 # identificam butonul 'Change Text to Selenium Webdriver
-# change_text_btn = driver.find_element(By.ID, "populate-text")
-# change_text_btn.click()
+change_text_btn = driver.find_element(By.ID, "populate-text")
+change_text_btn.click()
 
 # identificam elementul cu textul 'Selenium Webdriver' dupa text si id (XPATH)
-# changing_text_element = driver.find_element(By.XPATH, '//*[@id="h2" and contains(text(), "Selenium Webdriver")]')
+changing_text_element = driver.find_element(By.XPATH, '//*[@id="h2" and contains(text(), "Selenium Webdriver")]')
 
 # CONCLUZIE:
 # Pentru ca incercam sa identificam elementul cu textul 'Selenium Webdriver' cu un timp
@@ -73,21 +73,21 @@ c.
 - Identifica elementul cu textul 'Selenium Webdriver' dupa text si id (folosind XPATH).
 Observa ce se intampla
 """
-# driver.implicitly_wait(11)
+driver.implicitly_wait(11)
 
 # identificam butonul 'Change Text to Selenium Webdriver
-# change_text_btn = driver.find_element(By.ID, "populate-text")
-# change_text_btn.click()
+change_text_btn = driver.find_element(By.ID, "populate-text")
+change_text_btn.click()
 
 # daca avem un element care nu este disponibil pe pagina
 # se cauta timp de cate secunde sunt setate ca implicit wait
-# si daca nici nu se gaseste dupa ce trec secundele respective
+# si daca nu se gaseste dupa nici ce trec secundele respective
 # vom avea eroare
-# change_text_btn = driver.find_element(By.ID, "p-text")
-# change_text_btn.click()
+change_text_btn = driver.find_element(By.ID, "p-text")
+change_text_btn.click()
 
 # identificam elementul cu textul 'Selenium Webdriver' dupa text si id (XPATH)
-# changing_text_element = driver.find_element(By.XPATH, '//*[@id="h2" and contains(text(), "Selenium Webdriver")]')
+changing_text_element = driver.find_element(By.XPATH, '//*[@id="h2" and contains(text(), "Selenium Webdriver")]')
 
 # CONCLUZIE:
 # S-a asteptat timpul necesar pentru ca elementul sa fie disponibil pe site,
@@ -115,5 +115,5 @@ wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="h2" and contains(
 # pt ca elementul cu id-ul p-text nu este disponibil
 # pe pagina si nici nu avem un timp setat specific pentru
 # identificarea acestuia
-# change_text_btn = driver.find_element(By.ID, "p-text")
-# change_text_btn.click()
+change_text_btn = driver.find_element(By.ID, "p-text")
+change_text_btn.click()

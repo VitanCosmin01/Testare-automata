@@ -11,7 +11,7 @@ class TestYoutubePage(unittest.TestCase):
         self.driver = webdriver.Chrome()
         self.driver.get(self.LINK)
         self.driver.maximize_window()
-        time.sleep(30)
+        time.sleep(3)
         self.driver.implicitly_wait(10)
 
     def tearDown(self):
@@ -20,6 +20,7 @@ class TestYoutubePage(unittest.TestCase):
     def test_login(self):
         accept_cookies = self.driver.find_element(By.XPATH, "//*[@id='content']/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]")
         accept_cookies.click()
+
 
 if __name__ == '__main__':
     unittest.main()

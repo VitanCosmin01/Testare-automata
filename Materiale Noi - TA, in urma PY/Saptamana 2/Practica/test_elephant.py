@@ -25,6 +25,7 @@ class TestElefant(unittest.TestCase):
     PASSWORD_INPUT = (By.XPATH, "//input[@name='ShopLoginForm_Password']")
     SUBMIT_BTTN = (By.XPATH, "//div[@class='col-sm-12']/button")
     ALERT_ERROR_MSG = (By.XPATH, "//div[@class='alert alert-danger']")
+
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.get(self.LINK)
@@ -40,7 +41,7 @@ class TestElefant(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    @unittest.skip
+    # @unittest.skip
     def test_search_results_list(self):
         """
         2. - Cautam un produs la alegere (iphone 14)
@@ -66,19 +67,22 @@ class TestElefant(unittest.TestCase):
         din primele 10 produse gasite
         (puteti sa va folositi de find_elements)
         """
-    @unittest.skip
+    # @unittest.skip
     def test_find_lower_price(self):
-        #
+        # identificam search bar si introducem cuvantul de cautare
         search_bar = self.driver.find_element(*self.SEARCH_BAR)
         search_bar.send_keys("Iphone 14")
         time.sleep(4)
+        # identificam butonul de cautare si dam click
         search_btn = self.driver.find_element(*self.SEARCH_BTN)
         self.driver.execute_script("arguments[0].click();", search_btn)
         # search_btn.click()
         time.sleep(4)
-        price_elements = self.driver.find_elements(By.CLASS_NAME, "current-price")  # se foloseste daca apar ferestre pop-up in loc la  .click
+        # identificam elementul care corespunde pretului
+        price_elements = self.driver.find_elements(By.CLASS_NAME, "current-price")  #  se foloseste daca apar ferestre pop-up in loc la  .click
         print(price_elements)
         prices = []
+        # iteram prin lista de preturi pentru a inlocui punctul cu virgula si updatam lista de preturi
         for price_element in price_elements[:11]:
             price_list = price_element.text.split()
             print(price_list)
@@ -89,7 +93,7 @@ class TestElefant(unittest.TestCase):
         """
         4. Extrageti titlul paginii si verificati ca este corect
         """
-    @unittest.skip
+    # @unittest.skip
     def test_pagetitle(self):
         actual_title = self.driver.title
         expected_title = ("elefant.ro - mallul online al familiei tale! • Branduri de top, preturi excelente • Peste "
@@ -133,8 +137,15 @@ class TestElefant(unittest.TestCase):
     si verificati faptul ca butonul "conectare" este dezactivat
     """
     def test_deactivated_conection_button(self):
+        cont_button_element = self.driver.find_element(*self.CONT_BUTN_ELEMENT)
+        cont_button_element.click()
+        conectare_element = self.driver.find_element(*self.CONECTARE_ELEMENT)
+        conectare_element.click()
+        time.sleep(3)
         email_input = self.driver.find_element(*self.EMAIL_INPUT)
+        time.sleep(3)
         email_input.clear()
+        time.sleep(3)
         email_input.send_keys("vitan.cosmin")
         freezed_buton = self.driver.find_element(By.CLASS_NAME, "btn-block")
         self.assertTrue(freezed_buton)
